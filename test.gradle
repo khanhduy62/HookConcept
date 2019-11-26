@@ -1,0 +1,58 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        googlePlayServicesVersion = '16.+'
+        // googlePlayServicesVersion   = "16.1.0"
+
+        // buildToolsVersion = "27.0.3"
+        // minSdkVersion = 16
+        // compileSdkVersion = 27
+        // targetSdkVersion = 26
+        // supportLibVersion = "27.1.1"
+    }
+
+    repositories {
+        google()
+        
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.google.gms:google-services:3.1.2' // <--- add this
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        // Add jitpack repository (added by tipsi-stripe)
+        google()
+        maven { url "https://jitpack.io" }
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        jcenter()
+        // configurations.all {
+        //    resolutionStrategy {
+        //        force "com.google.android.gms:play-services-basement:16.1.0"
+
+        //         // force 'com.google.android.gms:play-services-gcm:16.1.0'
+        //         // force 'com.google.android.gms:play-services-base:16.1.0'
+        //         // force 'com.google.firebase:firebase-core:16.0.9'
+        //         // force 'com.google.firebase:firebase-messaging:18.0.0'
+        //    }
+        // }
+    }
+}
