@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useMemo} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import Child from './components/Child';
 
@@ -20,6 +20,13 @@ export default function App() {
     setCount(0);
   }, [setCount]);
 
+  const initialCandies = React.useMemo(
+    () => ['snickers', 'skittles', 'twix', 'milky way'],
+    [],
+  );
+
+  console.log('log--initialCandies ', initialCandies)
+  // console.log('log--resetCount ', resetCount)
   return (
     <View style={styles.container}>
       <Text>You clicked {count} times.</Text>
@@ -29,7 +36,7 @@ export default function App() {
         color="red"
         accessibilityLabel="Click this button to increase count"
       />
-      <Child reset={resetCount}/>
+      <Child reset={resetCount} />
     </View>
   );
 }
